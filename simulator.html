@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simulator - Machine 9 (8-Way BSA, LRU vs MRU)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1><span class="m9">M9</span>8-Way BSA Cache <span style="color:var(--blue)">LRU</span> <span style="color:var(--faint)">vs</span> <span style="color:var(--amber)">MRU</span></h1>
+  <nav><a href="index.html">&larr; back to guide</a></nav>
+</header>
+
+<div class="grid">
+
+  <div>
+    <div class="card">
+      <h2>Configuration</h2>
+
+      <label for="bs">Block size (words) - power of 2, min 2</label>
+      <input id="bs" type="number" value="16" min="2" step="1">
+
+      <label for="nb">Cache blocks - power of 2, min 8 (8-way)</label>
+      <input id="nb" type="number" value="16" min="8" step="1">
+
+      <label>Replacement policy</label>
+      <div class="seg pol" id="pol">
+        <button data-v="lru">LRU</button>
+        <button data-v="mru">MRU</button>
+        <button data-v="both" class="on">Both</button>
+      </div>
+      <div class="hint" style="margin-top:4px">Both = LRU and MRU run on the same sequence and animate side by side, step for step.</div>
+
+      <label>Read policy (on miss)</label>
+      <div class="seg" id="rp">
+        <button data-v="nlt" class="on">Non-load-through</button>
+        <button data-v="lt">Load-through</button>
+      </div>
+
+      <label for="tc">Test case</label>
+      <select id="tc">
+        <option value="a">a - Sequential (0..2n-1, twice)</option>
+        <option value="b">b - Mid-repeat blocks</option>
+        <option value="c">c - Random (64 accesses, 0-1023)</option>
+      </select>
+
+      <div id="seedrow" style="display:none">
+        <label for="seed">Random seed</label>
+        <input id="seed" type="number" value="42">
+      </div>
+
+      <label>View mode</label>
+      <div class="seg" id="vm">
+        <button data-v="anim" class="on">Step-by-step trace</button>
+        <button data-v="final">Final snapshot</button>
+      </div>
+
+      <button class="runbtn" id="run">Run simulation</button>
+      <div class="err" id="err"></div>
+      <div class="hint" id="cfgsum"></div>
+    </div>
+  </div>
+
+  <div>
+    <div class="stats" id="stats"></div>
+
+    <div class="card">
+      <div class="loghead" style="margin-bottom:6px">
+        <h2 style="margin:0">Cache memory state <span id="dielabel" style="color:var(--faint)"></span></h2>
+      </div>
+
+      <div class="bar" id="animbar" style="display:none">
+        <button id="btnPlay">Play</button>
+        <button id="btnStep">Step &rsaquo;</button>
+        <button id="btnBack">&lsaquo; Back</button>
+        <button id="btnReset">Reset</button>
+        <input type="range" id="scrub" min="0" value="0" aria-label="scrub through trace">
+        <label style="margin:0;display:flex;align-items:center;gap:6px;font-size:.7rem">speed
+          <select id="spd">
+            <option value="700">slow</option>
+            <option value="350" selected>normal</option>
+            <option value="120">fast</option>
+          </select>
+        </label>
+        <span class="stepinfo" id="stepinfo">-</span>
+      </div>
+
+      <div class="dies" id="dies"></div>
+
+      <div class="legend">
+        <span><span class="dot" style="background:var(--hit)"></span>hit</span>
+        <span><span class="dot" style="background:var(--miss)"></span>miss / placed</span>
+        <span><span class="dot" style="background:var(--amber)"></span>evicted this step</span>
+        <span><span class="dot" style="background:var(--blue)"></span>recency bar (full = most recent)</span>
+      </div>
+
+      <div class="seqview" id="seqview"></div>
+    </div>
+
+    <div class="card section">
+      <div class="loghead">
+        <h2 style="margin:0">Trace log</h2>
+        <button id="dl">download log.txt</button>
+      </div>
+      <div class="log" id="log"></div>
+    </div>
+
+    <div class="card section">
+      <h2>LRU vs MRU on the same sequence</h2>
+      <table id="cmp"></table>
+      <div class="hint">Both policies are run on the exact sequence above with the same parameters, so the numbers are directly comparable.</div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<script src="simulator.js"></script>
+</body>
+</html>

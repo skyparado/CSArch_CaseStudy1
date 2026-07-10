@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Machine 9 - Cache Simulation (8-Way BSA, LRU vs MRU)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1><span class="m9">M9</span>Cache Simulation Project</h1>
+  <nav><a href="simulator.html">open simulator &rarr;</a></nav>
+</header>
+
+<section class="hero">
+  <h1>8-Way Block-Set-Associative Cache:<br>LRU vs MRU replacement</h1>
+  <p>
+    A simulator for Machine 9. It models an 8-way set-associative cache in front of a
+    1024-block main memory, runs the three required access patterns, and reports
+    hit/miss statistics, average memory access time, and a full trace log. Every run
+    also shows the same sequence under both LRU and MRU so the two policies can be
+    compared directly.
+  </p>
+  <a class="cta" href="simulator.html">Open the simulator</a>
+</section>
+
+<h2 style="font-family:var(--mono);font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.14em;margin-bottom:4px">How to use it</h2>
+<div class="steps">
+  <div class="card step">
+    <h3><span>1</span>Set the parameters</h3>
+    <p>Pick a <code>block size</code> (words, power of 2, min 2) and the <code>number of cache blocks</code>
+    (power of 2, min 8 - an 8-way cache needs at least one full set). Sets are computed as
+    blocks &divide; 8, and a memory block maps to <code>set = block mod sets</code>.</p>
+  </div>
+  <div class="card step">
+    <h3><span>2</span>Pick the policies</h3>
+    <p>Choose the replacement policy: <code>LRU</code>, <code>MRU</code>, or <code>Both</code>, which runs
+    the two caches on the same sequence and animates them side by side so every step can be compared
+    directly. Also pick the read policy (<code>non-load-through</code> or <code>load-through</code>),
+    which changes the miss penalty.</p>
+  </div>
+  <div class="card step">
+    <h3><span>3</span>Choose a test case</h3>
+    <p>Test <code>a</code> is the sequential pattern, <code>b</code> is the mid-repeat pattern, and
+    <code>c</code> is 64 random accesses in the range 0-1023. The random case takes a seed so a
+    run can be reproduced exactly.</p>
+  </div>
+  <div class="card step">
+    <h3><span>4</span>Run and inspect</h3>
+    <p>Press <code>Run simulation</code>. Use the view toggle for either a step-by-step animation
+    (play, step, scrub) or the final snapshot only. The trace log is always generated and can be
+    downloaded as a text file.</p>
+  </div>
+</div>
+
+<div class="card section">
+  <h2>What the display means</h2>
+  <p style="color:var(--muted);font-size:.85rem;line-height:1.7">
+    Each row is one cache set with its 8 ways. A cell shows the memory block currently stored in that
+    way. The thin blue bar at the bottom of a cell is its recency inside the set: a full bar is the
+    most recently used block, a short bar is the least recently used. The MRU/LRU badges mark the two
+    candidates that matter for replacement. During the animation, a green flash is a hit, a red flash
+    is a miss (block placed), and an amber border means a block was evicted on that step.
+  </p>
+</div>
+
+<div class="card section">
+  <h2>Fixed specifications</h2>
+  <table class="spec-table">
+    <tr><td>Mapping</td><td>8-way block-set-associative</td></tr>
+    <tr><td>Main memory</td><td>1024 blocks</td></tr>
+    <tr><td>Cache access time</td><td>1 ns</td></tr>
+    <tr><td>Memory access time</td><td>10 ns per word</td></tr>
+    <tr><td>Hit time</td><td>1 ns</td></tr>
+    <tr><td>Miss, non-load-through</td><td>1 + 10 x block size + 1 ns</td></tr>
+    <tr><td>Miss, load-through</td><td>1 + 10 x block size ns</td></tr>
+  </table>
+</div>
+
+<footer>
+  Files: index.html (this page) &middot; simulator.html (the tool) &middot; style.css &middot; simulator.js &middot; README.md (analysis).
+  See the README for the test case walkthroughs and expected results.
+</footer>
+
+</div>
+</body>
+</html>
