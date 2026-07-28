@@ -23,11 +23,11 @@
 ```
 CSArch_CaseStudy1/
 |-- index.html            | landing page / usage guide
-|-- simulator.html      | cache simulator interface
+|-- simulator.html        | cache simulator interface
 |-- about.html            | project credits and submission info
-|-- style.css                | shared site styling
-|-- simulator.js           | cache simulation logic and UI behavior
-|-- README.md       | project documentation
+|-- style.css             | shared site styling
+|-- simulator.js          | cache simulation logic and UI behavior
+|-- README.md             | project documentation
 |-- assets/
 |-- images/
 ```
