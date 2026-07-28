@@ -1,17 +1,35 @@
-# Machine 9 — Cache Simulation: 8-Way BSA + LRU vs 8-Way BSA + MRU
+<p align="center">
+<img src="images/dlsu_logo.png" alt="De La Salle University Logo" width="150"/>
+</p>
 
-Simulator for an 8-way block-set-associative (BSA) cache, comparing two replacement
-policies on the same machine: LRU (evict the least recently used block in the set)
-and MRU (evict the most recently used block in the set).
+# Case Study Project #1 — README
+
+### Cache Memory Machine: 8-Way BSA + LRU vs. 8-Way BSA + MRU
+
+**Submitted by Group 7 [S01]:**
+
+- GALICIA, Lance Krystofer A.
+- KE, Xan Luo C.
+- MOJICA, Maurienne Marie M.
+- PARADO, Sky Hannah G.
+- YAMSUAN, Rhian Claire V.
+
+*August 4, 2026*
+
+---
 
 ## Project files
 
 ```
-index.html      landing page - explains how the simulator works and how to use it
-simulator.html  the simulator itself
-style.css       all styling
-simulator.js    sequence generators, cache simulation, and UI code
-README.md       this file (specs, test cases, analysis)
+CSArch_CaseStudy1/
+|-- index.html            | landing page / usage guide
+|-- simulator.html      | cache simulator interface
+|-- about.html            | project credits and submission info
+|-- style.css                | shared site styling
+|-- simulator.js           | cache simulation logic and UI behavior
+|-- README.md       | project documentation
+|-- assets/
+|-- images/
 ```
 
 No build step or server is needed. Clone the repo and open `index.html`
@@ -184,3 +202,11 @@ known large sequential scans (a common example is database scan workloads). The
 random case shows that when there is no locality at all, neither policy helps, and
 the only lever left is the miss penalty, where load-through gives a small constant
 saving per miss.
+
+---
+
+## Declaration of AI Usage
+
+> In the development of this project, the group used AI as a supporting tool throughout the design and development process. AI assistance was primarily used for debugging layout, rendering, and state-management issues; drafting and refining the simulator and animation logic; writing explanatory inline code comments; improving UI spacing, contrast, and responsive behavior; and reviewing the clarity, grammar, and terminology of the written analysis.
+
+>All AI-assisted code and content were manually reviewed, tested locally, and verified against the machine specifications before being committed to the project. AI tools were treated as a guide for troubleshooting and refinement, not as a substitute for the group's own understanding, and final implementation decisions, simulator behavior, and written analysis were confirmed and adjusted by each member individually.
