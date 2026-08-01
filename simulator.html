@@ -108,7 +108,10 @@
     <div class="card section">
       <div class="loghead">
         <h2 style="margin:0">Trace log</h2>
-        <button id="dl">download log.txt</button>
+        <div style="display:flex;gap:8px">
+          <button id="expandLog">expand &#x2922;</button>
+          <button id="dl">download log.txt</button>
+        </div>
       </div>
       <div class="log" id="log"></div>
     </div>
@@ -121,6 +124,19 @@
   </div>
 
 </div>
+</div>
+
+<div class="modal-overlay" id="logModal">
+  <div class="modal-box">
+    <div class="loghead modal-head">
+      <h2 style="margin:0">Trace log <span class="dielabel-sub" id="modalMeta"></span></h2>
+      <div style="display:flex;gap:8px">
+        <button id="dlModal">download log.txt</button>
+        <button id="closeLog">close &#x2715;</button>
+      </div>
+    </div>
+    <div class="log modal-log" id="logFull"></div>
+  </div>
 </div>
 
 <script src="simulator.js"></script>

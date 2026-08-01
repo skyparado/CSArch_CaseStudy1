@@ -483,6 +483,30 @@ function stopAnim() {
   }
 }
 
+function openLogModal() {
+  if (!RUNS) return;
+  $('logFull').innerHTML = $('log').innerHTML;
+  const first = RUNS[ACTIVE[0]];
+  $('modalMeta').textContent =
+    `${first.sets}x8 ways, ${ACTIVE.map((p) => p.toUpperCase()).join(' vs ')}, ` +
+    `${first.readPolicy === 'lt' ? 'load-through' : 'non-load-through'} - ${STEPS} accesses`;
+  $('logModal').classList.add('open');
+}
+
+function closeLogModal() {
+  $('logModal').classList.remove('open');
+}
+
+$('expandLog').addEventListener('click', openLogModal);
+$('closeLog').addEventListener('click', closeLogModal);
+$('logModal').addEventListener('click', (e) => {
+  if (e.target.id === 'logModal') closeLogModal();
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && $('logModal').classList.contains('open')) closeLogModal();
+});
+$('dlModal').addEventListener('click', () => $('dl').click());
+
 $('btnPlay').addEventListener('click', () => {
   if (!RUNS) return;
   if (animTimer) { stopAnim(); return; }

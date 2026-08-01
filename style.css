@@ -16,6 +16,10 @@
   --sans: 'Space Grotesk', system-ui, -apple-system, sans-serif;
 }
 
+html {
+  font-size: 112.5%;
+}
+
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
@@ -521,4 +525,53 @@ nav a.active { border-color: var(--blue); color: var(--ink); }
   font-size: 0.78rem;
   color: var(--ink);
   line-height: 1.5;
+}
+
+/* ---- Trace log modal ---- */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(6, 9, 14, 0.72);
+  backdrop-filter: blur(2px);
+  z-index: 100;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 16px;
+}
+.modal-overlay.open { display: flex; }
+
+.modal-box {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 16px;
+  width: 100%;
+  max-width: 1100px;
+  height: 100%;
+  max-height: 860px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.45);
+}
+
+.modal-head { flex: 0 0 auto; }
+.modal-head #modalMeta {
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  color: var(--faint);
+  margin-left: 8px;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.modal-log {
+  flex: 1 1 auto;
+  height: auto;
+  font-size: 0.8rem;
+}
+
+@media (max-width: 640px) {
+  .modal-box { padding: 12px; max-height: 92vh; }
 }
