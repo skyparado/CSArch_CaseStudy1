@@ -18,6 +18,20 @@
 
 ---
 
+## About
+
+This repository contains the Machine 9 submission for the CSARCH2 Simulation Project 
+(3rd Term, AY 2025-2026): an 8-way block-set-associative (BSA) cache simulator that 
+compares LRU and MRU replacement policies on the same access sequence. It is a 
+web-based GUI application built with vanilla HTML, CSS, and JavaScript, requiring no 
+build step or server.
+
+**Deployment Link:** [site link]
+
+**Video Walkthrough:** [YouTube link]
+
+---
+
 ## Project files
 
 ```
