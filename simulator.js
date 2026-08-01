@@ -10,6 +10,8 @@ const POLICY_COLOR = { lru: 'var(--blue)', mru: 'var(--amber)' };
 const $ = (id) => document.getElementById(id);
 const isPow2 = (x) => x >= 1 && (x & (x - 1)) === 0;
 
+let hasRunBefore = false;
+
 function mulberry32(seed) {
   return function () {
     seed |= 0;
@@ -215,6 +217,11 @@ $('run').addEventListener('click', () => {
   renderLog();
   renderCompare();
   applyViewMode();
+
+  if (hasRunBefore && segVal('vm') === 'anim') {
+    $('btnPlay').click();
+  }
+  hasRunBefore = true;
 });
 
 function applyViewMode() {
