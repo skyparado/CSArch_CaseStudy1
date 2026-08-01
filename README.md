@@ -26,7 +26,7 @@ compares LRU and MRU replacement policies on the same access sequence. It is a
 web-based GUI application built with vanilla HTML, CSS, and JavaScript, requiring no 
 build step or server.
 
-**Deployment Link:** [site link]
+**Deployment Link:** https://skyparado.github.io/CSArch_CaseStudy1/
 
 **Video Walkthrough:** [YouTube link]
 
