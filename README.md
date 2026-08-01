@@ -28,7 +28,7 @@ build step or server.
 
 **Deployment Link:** https://skyparado.github.io/CSArch_CaseStudy1/
 
-**Video Walkthrough:** [YouTube link]
+**Video Walkthrough:** https://youtu.be/L6NNEHwnfp8
 
 ---
 
