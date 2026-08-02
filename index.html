@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Machine 9 - Cache Simulation (8-Way BSA, LRU vs MRU)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -33,7 +33,7 @@
   </div>
 </section>
 
-<h2 style="font-family:var(--mono);font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.14em;margin-bottom:4px">How to use it</h2>
+<h2 class="section-label">How to use it</h2>
 <div class="steps">
   <div class="card step">
     <h3><span>1</span>Set the parameters</h3>
@@ -64,7 +64,7 @@
 
 <div class="card section">
   <h2>What the display means</h2>
-  <p style="color:var(--muted);font-size:.85rem;line-height:1.7">
+  <p style="color:var(--muted)">
     Each row is one cache set with its 8 ways. A cell shows the memory block currently stored in that
     way. The thin blue bar at the bottom of a cell is its recency inside the set: a full bar is the
     most recently used block, a short bar is the least recently used. The MRU/LRU badges mark the two
